@@ -1,0 +1,46 @@
+---
+title: "portfolio Computational Musicology"
+author: "Ellen Rosmalen"
+date: "`r Sys.Date()`"
+output: 
+    flexdashboard::flex_dashboard:
+      story: true 
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library (flexdashboard)
+```
+
+### Introduction
+
+```{r}
+
+```
+
+-------------------------------------------------------------------------------
+
+text
+
+### Visualisation
+
+```{r}
+
+```
+
+-------------------------------------------------------------------------------
+
+text
+
+### Conclusion and Discussion
+
+```{r}
+
+```
+
+-------------------------------------------------------------------------------
+
+text
