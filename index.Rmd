@@ -2,13 +2,14 @@
 title: "portfolio Computational Musicology"
 author: "Ellen Rosmalen"
 date: "`r Sys.Date()`"
-output: 
+output: html_document
     flexdashboard::flex_dashboard:
       story: true 
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
 
 ```{r, echò = FALSE}
