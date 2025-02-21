@@ -1,8 +1,92 @@
 ---
-  title: "My Portfolio"
-output: html_document
+title: "portfolio Computational Musicology"
+author: "Ellen Rosmalen"
+date: "`r Sys.Date()`"
+output: 
+    flexdashboard::flex_dashboard:
+      story: true 
 ---
-  
-  # Welcome to my portfolio
-  This is my own website to portay the portfolio
-  
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echò = FALSE}
+library(ggplot2)
+library(tidyverse)
+library (flexdashboard)
+```
+
+### Introduction
+
+```{r}
+
+```
+
+-------------------------------------------------------------------------------
+
+Here will be some more text on the introduction of the portfolio. The songs used in this portfolio were created using StableAudio with carefully crafted prompts to achieve the desired sound. The promt used to make the two tracks was "Generate an R&B track with a mix of joyful, melancholic, and romantic emotions. The music should have a warm and soulful atmosphere, featuring a smooth groove and a rhythmic beat. An expressive saxophone melody should be the centerpiece, complemented by soft electric piano chords, subtle guitar licks, and a warm bassline. The tempo should be medium to fast (around 90-110 BPM), making the track both immersive and danceable. The structure of the song should be verse-chorus-verse-chorus-bridge-chorus.’’ The seed was set at random to make two different songs with the same prompt. 
+
+### Visualisation
+
+```{r}
+library(readr)
+aisc2024 <- read_csv("~/PortfolioCM/aisc2024.csv")
+
+aisc2024 |>  # Start with the data
+  ggplot(         # Set up the plot.
+    aes(
+      x = tempo,
+      y = arousal,
+      size = instrumentalness,
+      colour = danceability
+    )
+  ) +
+  geom_point() +              # Scatter plot.
+  geom_rug(linewidth = 0.1) + # Add 'fringes' to show data distribution.
+  geom_text(                  # Add text labels.
+    aes(x = 121, y = 4.91, label = "Onda Corta - Sud America"),
+    size = 3,                 # Override size.
+    hjust = 0,                # Left align (0 instead of "left").
+    vjust = 0.5,              # Center align (0.5 instead of "center").
+    angle = 30                # Rotate text.
+  ) +
+  scale_x_continuous(         # Fine-tune the x-axis.
+    limits = c(50, 200),
+    breaks = c(50, 100, 150, 200), # Specify grid lines.
+    minor_breaks = NULL       # Remove 'minor' grid lines.
+  ) +
+  scale_y_continuous(         # Fine-tune the y-axis.
+    limits = c(1, 9),
+    breaks = c(1, 5, 9),
+    minor_breaks = NULL
+  ) +
+  scale_colour_viridis_c() +  # Use the viridis color palette.
+  scale_size_continuous(      # Fine-tune point sizes.
+    trans = "sqrt",           # Use sqrt transformation instead of "exp".
+    guide = "none"            # Remove size legend.
+  ) +
+  theme_light() +             # Use a light theme.
+  labs(                       # Improve axis labels.
+    x = "Tempo",
+    y = "Arousal",
+    colour = "Danceability"
+  )
+
+
+
+```
+
+-------------------------------------------------------------------------------
+
+The visualisation on the left is from the song contest, however, in the future here will be text about the visualisations of my musical tracks compared to the class corpus.
+
+### Conclusion and Discussion
+
+```{r}
+
+```
+
+-------------------------------------------------------------------------------
+
+Here will be text on the the conclusion and discussion based on the results of the visualisations. 
